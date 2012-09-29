@@ -1,0 +1,8 @@
+*.pyc
+*.pyo
+.DS_Store
+*~
+.codeintel
+env
+externalwork.sublime-project
+externalwork.sublime-workspace
