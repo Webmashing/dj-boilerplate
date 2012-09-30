@@ -4,6 +4,7 @@ import os
 ROOT_PATH = os.path.dirname(os.path.dirname(__file__))
 
 DEBUG = True
+COMPRESS_ENABLED = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -37,7 +38,7 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = os.path.join(ROOT_PATH, 'public/media')
+MEDIA_ROOT = os.path.join(ROOT_PATH, 'media')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -49,6 +50,7 @@ MEDIA_URL = '/media/'
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
 STATIC_ROOT = os.path.join(ROOT_PATH, 'static')
+COMPRESS_OUTPUT_DIR = 'cache'
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -66,6 +68,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder'
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
@@ -87,7 +90,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     # HTML compression
     'django.middleware.gzip.GZipMiddleware',
-    'pipeline.middleware.MinifyHTMLMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
@@ -113,7 +115,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'south',
-    'pipeline',
+    'compressor'
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
@@ -146,8 +148,6 @@ LOGGING = {
         },
     }
 }
-
-#STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
 
 # PIPELINE_COMPILERS = (
 #   'pipeline.compilers.less.LessCompiler',

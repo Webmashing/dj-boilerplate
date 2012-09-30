@@ -4,11 +4,11 @@ amqplib==1.0.2
 anyjson==0.3.3
 billiard==2.7.3.17
 celery==3.0.11
+django-appconf==0.5
 django-celery==3.0.10
+django-compressor==1.2
 django-debug-toolbar==0.9.4
-django-debug-toolbar-user-panel==0.1
 django-facebook==4.1.6
-django-pipeline==1.2.17
 importlib==1.0.2
 kombu==2.4.7
 memcache-toolbar==0.5.2

@@ -1,11 +1,17 @@
+{% load static from staticfiles %}
+{% load compress %}
+
 <!DOCTYPE html>
 <html>
 <head>
   <title>Test Page</title>
   <meta charset="utf-8">
+  {% compress css %}
+  <link rel="stylesheet" href="{% static "css/style.css" %}">
+  {% endcompress %}
 </head>
 <body>
   <h1>trans</h1>
-  <p>This is a simple test page.
+  <p></p>
 </body>
 </html>
